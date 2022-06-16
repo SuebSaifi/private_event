@@ -1,0 +1,11 @@
+<section class="section">
+<div class="container d-flex justify-content-evenly">
+<%if user_signed_in?%>
+<div class="d-flex around">
+<%= render "profile" %>
+<%end%>
+<%= render 'event'%>
+</div>
+<%= render 'allevents'%>
+</div>
+</section>

@@ -1,0 +1,12 @@
+<%= simple_form_for(@event) do |f| %>
+  
+
+<%# <%=f.error_notification%>
+<div class="field">
+<div class="container">
+<%= f.input :title,label:"Event title", input_html:{class:"textarea"},wrapper: false,lable_html:{class:"label"},placeholder:"Compose a new Tweet...",autofocus:true%>
+<%= f.input :price,label:"Price it", input_html:{class:"decimal"},wrapper: false,lable_html:{class:"label"},placeholder:"Add a Price",autofocus:true%>
+</div>
+</div>
+<%= f.button :submit , class:"btn btn-info my-3" %>
+<%end%>

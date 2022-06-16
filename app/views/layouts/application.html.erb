@@ -8,9 +8,56 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
   </head>
 
   <body>
+<%if flash[:notice] %>
+    <div class="notification is-primary global-notification">
+    <p class="notice"><%=notice%></p>
+    </div>
+    <%end%>
+    <%if flash[:alert]%>
+    <div class="notification is-danger global-notification">
+    <p class="alert"><%= alert %></p>
+    </div><%end%>
+       <nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <%=link_to "Events",root_path,class:"navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        <li class="nav-item">
+          <%=link_to "Events",root_path,class:"nav-link" %>
+        </li>
+      </ul>
+     <p class="control mx-2">
+    <%= link_to "New Event",root_path, class: "btn btn-info btn-inverted"%>
+    </p>
+    <%if user_signed_in?%>
+    <p class="control mx-2">
+    <%= link_to current_user.name,edit_user_registration_path,class:"btn btn-info"%>
+    </p>
+    <p class="control mx-2" >
+    <%= link_to "Logout",destroy_user_session_path,method: :delete,class:"btn btn-info"%>
+    </p>
+    <%else%>
+    <p class="control mx-2">
+    <%=link_to "Sign In",new_user_session_path,class:"btn btn-info"%>
+    </p>
+    <p class="control mx-2">
+    <%= link_to "Sing Up",new_user_registration_path,class:"btn btn-info"%>
+    </p>
+    <%end%>
+    </div>
+  </div>
+</nav>
     <%= yield %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
   </body>
 </html>

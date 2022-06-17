@@ -1,11 +1,18 @@
-<section class="section">
-<div class="container d-flex justify-content-evenly">
+<section class="section my-5">
+<div class="container d-flex justify-content-center ">
 <%if user_signed_in?%>
-<div class="d-flex around">
-<%= render "profile" %>
+<div class="d-flex justify-content-evenly ">
+<span><%= render "profile"%> 
+</span>
+<span><%=render "eventbyuser"%>
+</span>
+<span><%= render 'event'%>
+</span>
+<%# <%=render "attends/attendee"%>
 <%end%>
-<%= render 'event'%>
 </div>
+<hr style="width:90%;text-align:center;margin-left:70px">
+<h2 class="mx-5">All Events</h2>
 <%= render 'allevents'%>
 </div>
 </section>

@@ -1,16 +1,14 @@
+<div class="container mx-auto"style="width:300px">
 <h2>Forgot your password?</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
+<%= f.input :email,label:"Email", input_html:{class:"textarea my-1"},wrapper: false,lable_html:{class:"label"},placeholder:"Enter your Email"%>
   <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+    <%= f.submit "Send me reset password instructions", class:"btn btn-info"%>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>

@@ -4,8 +4,12 @@
 <%# <%=f.error_notification%>
 <div class="field">
 <div class="container">
-<%= f.input :title,label:"Event title", input_html:{class:"textarea"},wrapper: false,lable_html:{class:"label"},placeholder:"Compose a new Tweet...",autofocus:true%>
-<%= f.input :price,label:"Price it", input_html:{class:"decimal"},wrapper: false,lable_html:{class:"label"},placeholder:"Add a Price",autofocus:true%>
+<%= f.input :title,label:"Event title", input_html:{class:"textarea my-1"},wrapper: false,lable_html:{class:"label"},placeholder:"Compose a new Event...",autofocus:true%>
+<%= f.input :location,label:"Event location", input_html:{class:"textarea my-1"},wrapper: false,lable_html:{class:"label"}%>
+<%= f.input :disc,label:"Event Discription", input_html:{class:"text"},wrapper: false,lable_html:{class:"label"}%>
+
+<%= f.input :date,label:"Event Date", input_html:{class:"date"},wrapper: false,lable_html:{class:"date"}%>
+<%= f.input :price,label:"Price it", input_html:{class:"textarea my-1"},wrapper: false,lable_html:{class:"label"},placeholder:"Add a Price"%>
 </div>
 </div>
 <%= f.button :submit , class:"btn btn-info my-3" %>

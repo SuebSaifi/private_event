@@ -4,6 +4,9 @@ class EventsController < ApplicationController
   # GET /events or /events.json
   def index
     @events = Event.all
+    if user_signed_in?
+    @spic_event=current_user.events
+    end
     @event = Event.new
   end
 
@@ -26,7 +29,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to event_url(@event), notice: "Event was successfully created." }
+        format.html { redirect_to root_path, notice: "Event was successfully created." }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -47,7 +50,10 @@ class EventsController < ApplicationController
       end
     end
   end
-
+  def upvote
+    @event = Event.find(params[:id])
+    @event.increment! :votes
+  end
   # DELETE /events/1 or /events/1.json
   def destroy
     @event.destroy
@@ -66,6 +72,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:title, :price)
+      params.require(:event).permit(:title,:location, :disc,:date,:price)
     end
 end

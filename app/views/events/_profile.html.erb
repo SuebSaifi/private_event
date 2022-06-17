@@ -1,44 +1,34 @@
-<div class="card is-one-quarter">
+<div class="card is-one-quarter" style="width:250px;max-higeht:500px">
     <div class="card-body ">
-        <p class="card-title">Profile</p>
+        <h3 class="card-title">Creater</h3>
         <div class="panel-block">
             <article class="media">
-                <div class="media-left">
-                    <figure class="image is64x64">
-                    <%=gravatar_image_tag(current_user.email,size:32,alt:current_user.name)%>
-                    </figure>
-                </div>
-                <div class="media-content">
-                    <div class="content">
+                <div class="media-left d-flex  my-3">
+                    <figure class="image is64x64 mx-4">
+                    <%# <%=gravatar_image_tag(current_user.email,alt:current_user.name) %>
+                    <%= image_tag 'default/user.png',size:64 %>
+                    </figure>   
                         <p>
                             <strong><%=current_user.name%></strong><br/>
                         <small><%=current_user.username%></small></p>
                     </div>
-                </div>
             </article>
         </div>
         <div class="panel-block ">
             <div class="d-flex justify-content-around">
                 <div class="level-item has-centered-text">
                     <div>
-                        <p class="heading">Events</p>
+                        <p class="heading"></p>
                         <p class="title is-6">
-                            <%=current_user.events.count%>
+                            Events Created : <b><%=current_user.events.count%></b>
+                        </p>
+                        <p class="heading"></p>
+                        <p class="title is-6">
+                            Events Attend : <b><%=current_user.events.count%></b>
                         </p>
                     </div>
                 </div>
-                <div class="level-item has-centered-text">
-                    <div>
-                        <p class="heading">Follower</p>
-                        <p class="title is-6">123</p>
-                    </div>
-                </div>
-                    <div class="level-item has-centered-text">
-                        <div>
-                            <p class="heading">Following</p>
-                            <p class="title is-6">456k</p>
-                    </div>
-                </div>
+               
                 </div>
             </div>
         </div>
